@@ -2,23 +2,23 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: 'ac7a37a35f2b4f59bd6214de6c45ba71',
+  rootNotionPageId: '6b312d0892f945a7a52203fef76ad4e5',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: '旅するエンジニアとその嫁',
-  domain: '旅するエンジニアとその嫁.jp',
-  author: 'yoshiki',
+  name: 'engineer blog by yoshiki-0428',
+  domain: 'tech-blog.yoshikiohashi.dev',
+  author: 'Yoshiki',
 
   // open graph metadata (optional)
-  description: '旅するエンジニアとその嫁のパーソナルブログ',
+  description: '',
 
   // social usernames (optional)
-  twitter: null,
-  github: null,
+  twitter: 'yoshiki__0428',
+  github: 'yoshiki-0428',
   linkedin: null,
 
   // default notion icon and cover images for site-wide consistency (optional)
@@ -53,7 +53,7 @@ export default siteConfig({
   navigationLinks: [
     {
       title: 'About',
-      pageId: 'ebb6de31b83b4f6e95eaa5b621f8a6f3'
+      pageId: 'e8560208a8b840fc8a4c1632fb7c0c1a'
     }
   ]
 })
