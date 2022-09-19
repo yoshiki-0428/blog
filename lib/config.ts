@@ -31,6 +31,11 @@ export const rootNotionSpaceId: string | null = parsePageId(
   { uuid: true }
 )
 
+export const asideNotionPageId: string = parsePageId(
+  getSiteConfig('asideNotionPageId'),
+  { uuid: false }
+)
+
 export const pageUrlOverrides = cleanPageUrlMap(
   getSiteConfig('pageUrlOverrides', {}) || {},
   { label: 'pageUrlOverrides' }
@@ -139,6 +144,7 @@ export const site: Site = {
   name,
   rootNotionPageId,
   rootNotionSpaceId,
+  asideNotionPageId,
   description
 }
 

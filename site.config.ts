@@ -10,6 +10,8 @@ export default siteConfig({
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
+  asideNotionPageId: '2ae2d6db5d324a729e81431217df2a4c',
+
   // basic site info (required)
   name: 'engineer blog by yoshiki-0428',
   domain: 'tech-blog.yoshikiohashi.dev',

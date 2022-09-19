@@ -5,12 +5,14 @@ import { PageActions } from './PageActions'
 import { PageSocial } from './PageSocial'
 
 import { getPageTweet } from 'lib/get-page-tweet'
+import { NotionRenderer } from 'react-notion-x'
 
 export const PageAside: React.FC<{
   block: Block
   recordMap: ExtendedRecordMap
+  asideRecordMap?: ExtendedRecordMap
   isBlogPost: boolean
-}> = ({ block, recordMap, isBlogPost }) => {
+}> = ({ block, recordMap, asideRecordMap, isBlogPost }) => {
   if (!block) {
     return null
   }
@@ -25,5 +27,15 @@ export const PageAside: React.FC<{
     return <PageActions tweet={tweet} />
   }
 
-  return <PageSocial />
+  return (
+    <div>
+      <PageSocial />
+      {asideRecordMap && (
+        <NotionRenderer
+          className='notion-aside-block'
+          recordMap={asideRecordMap}
+        />
+      )}
+    </div>
+  )
 }

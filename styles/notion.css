@@ -17,6 +17,10 @@
   line-height: 1.65;
 }
 
+.notion-aside-block {
+  width: auto
+}
+
 .index-page,
 .tags-page {
   --notion-max-width: 900px;

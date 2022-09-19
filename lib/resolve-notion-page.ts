@@ -10,6 +10,7 @@ import { getSiteMap } from './get-site-map'
 export async function resolveNotionPage(domain: string, rawPageId?: string) {
   let pageId: string
   let recordMap: ExtendedRecordMap
+  let asideRecordMap: ExtendedRecordMap = null
 
   if (rawPageId && rawPageId !== 'index') {
     pageId = parsePageId(rawPageId)
@@ -84,8 +85,9 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
 
     console.log(site)
     recordMap = await getPage(pageId)
+    asideRecordMap = await getPage(site.asideNotionPageId)
   }
 
-  const props = { site, recordMap, pageId }
+  const props = { site, recordMap, asideRecordMap, pageId }
   return { ...props, ...(await acl.pageAcl(props)) }
 }
