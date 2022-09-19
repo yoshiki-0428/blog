@@ -1,6 +1,8 @@
 import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
+  language: 'ja',
+
   // the site's root Notion page (required)
   rootNotionPageId: 'ac7a37a35f2b4f59bd6214de6c45ba71',
 
@@ -11,7 +13,7 @@ export default siteConfig({
   // basic site info (required)
   name: '旅するエンジニアとその嫁',
   domain: '旅するエンジニアとその嫁.jp',
-  author: 'yoshiki',
+  author: 'TabiYome',
 
   // open graph metadata (optional)
   description: '旅するエンジニアとその嫁のパーソナルブログ',

@@ -52,7 +52,7 @@ export const getStaticProps = async (context) => {
                 recordMap.collection_query[collection.id]?.[galleryView.id]
               const queryResults = query?.collection_group_results ?? query
 
-              if (queryResults) {
+              if (queryResults && queryResults.blockIds) {
                 queryResults.blockIds = queryResults.blockIds.filter((id) => {
                   const block = recordMap.block[id]?.value
                   if (!block || !block.properties) {
