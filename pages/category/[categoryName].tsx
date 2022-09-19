@@ -9,7 +9,7 @@ import { normalizeTitle } from 'notion-utils'
 const tagsPropertyNameLowerCase = 'category'
 
 export const getStaticProps = async (context) => {
-  const rawTagName = (context.params.tagName as string) || ''
+  const rawTagName = (context.params.categoryName as string) || ''
 
   try {
     const props = await resolveNotionPage(domain, rootNotionPageId)
@@ -67,7 +67,7 @@ export const getStaticProps = async (context) => {
                   const values = value.split(',')
                   if (
                     !values.find(
-                      (value: string) => normalizeTitle(value) === filteredValue
+                      (value: string) => normalizeTitle(value) === rawTagName
                     )
                   ) {
                     return false
