@@ -6,10 +6,10 @@ import { NotionPage } from 'components'
 import { ExtendedRecordMap } from 'notion-types'
 import { normalizeTitle } from 'notion-utils'
 
-const tagsPropertyNameLowerCase = 'tags'
+const tagsPropertyNameLowerCase = 'category'
 
 export const getStaticProps = async (context) => {
-  const rawTagName = (context.params.tagName as string) || ''
+  const rawTagName = (context.params.categoryName as string) || ''
 
   try {
     const props = await resolveNotionPage(domain, rootNotionPageId)
@@ -67,7 +67,7 @@ export const getStaticProps = async (context) => {
                   const values = value.split(',')
                   if (
                     !values.find(
-                      (value: string) => normalizeTitle(value) === filteredValue
+                      (value: string) => normalizeTitle(value) === rawTagName
                     )
                   ) {
                     return false
@@ -116,7 +116,7 @@ export async function getStaticPaths() {
         const paths = propertyToFilterSchema.options
           .map((option) => normalizeTitle(option.value))
           .filter(Boolean)
-          .map((slug) => `/tags/${slug}`)
+          .map((slug) => `/category/${slug}`)
 
         return {
           paths,
