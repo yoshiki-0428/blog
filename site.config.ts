@@ -1,6 +1,8 @@
 import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
+  language: 'ja',
+
   // the site's root Notion page (required)
   rootNotionPageId: 'df0b51fe0eb04981aaa95c7e2a2280b4',
 
