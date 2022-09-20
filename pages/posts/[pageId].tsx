@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextApiRequest, NextApiResponse } from 'next'
+import { GetServerSideProps } from 'next'
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
