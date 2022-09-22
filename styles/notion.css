@@ -26,6 +26,14 @@
   background: var(--bg-color);
 }
 
+.notion-aside-block > .notion-h3 {
+  margin-top: 0;
+}
+
+.notion-page .notion-aside-block {
+  line-height: 0.8;
+}
+
 .index-page,
 .tags-page {
   --notion-max-width: 900px;
