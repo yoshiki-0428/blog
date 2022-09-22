@@ -119,6 +119,16 @@ const propertyDateValue = (
   { data, schema, pageHeader },
   defaultFn: () => React.ReactNode
 ) => {
+  if (pageHeader && schema?.name?.toLowerCase() === 'last updated') {
+    const lastUpdated = data?.[0]?.[1]?.[0]?.[1]?.start_date
+
+    if (lastUpdated) {
+      return `Last Updated ${formatDate(lastUpdated, {
+        month: 'long'
+      })}`
+    }
+  }
+
   if (pageHeader && schema?.name?.toLowerCase() === 'published') {
     const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
 
@@ -148,6 +158,14 @@ const propertySelectValue = (
   defaultFn: () => React.ReactNode
 ) => {
   value = normalizeTitle(value)
+
+  if (pageHeader && schema.type === 'select' && value) {
+    return (
+      <Link href={`/category/${value}`} key={key}>
+        <a>{defaultFn()}</a>
+      </Link>
+    )
+  }
 
   if (pageHeader && schema.type === 'multi_select' && value) {
     return (
