@@ -6,6 +6,7 @@ import { notion } from './notion-api'
 import { getCanonicalPageId } from './get-canonical-page-id'
 import * as config from './config'
 import * as types from './types'
+import { filterCheckbox } from './filterProperty'
 
 const uuid = !!includeNotionIdInUrls
 
@@ -38,6 +39,10 @@ async function getAllPagesImpl(
     rootNotionPageId,
     rootNotionSpaceId,
     getPage
+  )
+
+  Object.keys(pageMap).map(
+    (pageId) => (pageMap[pageId] = filterCheckbox(pageMap[pageId]))
   )
 
   const canonicalPageMap = Object.keys(pageMap).reduce(
