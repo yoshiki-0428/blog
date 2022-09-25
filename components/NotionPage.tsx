@@ -123,9 +123,14 @@ const propertyDateValue = (
     const lastUpdated = data?.[0]?.[1]?.[0]?.[1]?.start_date
 
     if (lastUpdated) {
-      return `Last Updated ${formatDate(lastUpdated, {
-        month: 'long'
-      })}`
+      return (
+        <div>
+          <b>Last Updated </b>
+          {formatDate(lastUpdated, {
+            month: 'long'
+          })}
+        </div>
+      )
     }
   }
 
@@ -133,9 +138,14 @@ const propertyDateValue = (
     const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
 
     if (publishDate) {
-      return `Published ${formatDate(publishDate, {
-        month: 'long'
-      })}`
+      return (
+        <div>
+          <b>Published </b>
+          {formatDate(publishDate, {
+            month: 'long'
+          })}
+        </div>
+      )
     }
   }
 
@@ -148,6 +158,18 @@ const propertyTextValue = (
 ) => {
   if (pageHeader && schema?.name?.toLowerCase() === 'author') {
     return <b>{defaultFn()}</b>
+  }
+
+  return defaultFn()
+}
+
+const propertyNumberValue = (
+  { data, schema, pageHeader },
+  defaultFn: () => React.ReactNode
+) => {
+  if (pageHeader && schema?.name?.toLowerCase() === 'writings') {
+    const writings = data?.[0]?.[0] as number
+    return 'この記事は約' + Math.ceil(writings / 400) + '分で読めます'
   }
 
   return defaultFn()
@@ -207,7 +229,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
       propertyLastEditedTimeValue,
       propertyTextValue,
       propertyDateValue,
-      propertySelectValue
+      propertySelectValue,
+      propertyNumberValue
     }),
     []
   )
