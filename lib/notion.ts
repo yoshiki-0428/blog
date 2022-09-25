@@ -1,7 +1,7 @@
 import pMap from 'p-map'
 import pMemoize from 'p-memoize'
 import { ExtendedRecordMap, SearchParams, SearchResults } from 'notion-types'
-import { getPageProperty, mergeRecordMaps } from 'notion-utils'
+import { mergeRecordMaps } from 'notion-utils'
 
 import { notion } from './notion-api'
 import { getPreviewImageMap } from './preview-images'
@@ -10,6 +10,7 @@ import {
   navigationStyle,
   navigationLinks
 } from './config'
+import { filterCheckbox } from './filterProperty'
 
 const getNavigationLinkPages = pMemoize(
   async (): Promise<ExtendedRecordMap[]> => {
@@ -55,7 +56,7 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
     }
   }
 
-  recordMap = filterForPublic(recordMap)
+  recordMap = filterCheckbox(recordMap)
 
   if (isPreviewImageSupportEnabled) {
     const previewImageMap = await getPreviewImageMap(recordMap)
@@ -69,25 +70,6 @@ export async function search(params: SearchParams): Promise<SearchResults> {
   const results = await notion.search(params)
 
   const recordMap = results.recordMap as ExtendedRecordMap
-  results.recordMap = filterForPublic(recordMap)
+  results.recordMap = filterCheckbox(recordMap)
   return results
-}
-
-const filterForPublic = (
-  recordMap: ExtendedRecordMap,
-  filterPropertyName = 'Public'
-) => {
-  const keys = Object.keys(recordMap?.block || {})
-  for (const key of keys) {
-    const block = recordMap?.block?.[key]?.value
-    const publish = getPageProperty<boolean | null>(
-      filterPropertyName,
-      block,
-      recordMap
-    )
-    if (block?.type === 'page' && publish === false) {
-      delete recordMap.block[key]
-    }
-  }
-  return recordMap
 }
