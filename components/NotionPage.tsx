@@ -1,23 +1,19 @@
 import * as React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
 import dynamic from 'next/dynamic'
-import cs from 'classnames'
+import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useSearchParam } from 'react-use'
-import BodyClassName from 'react-body-classname'
+
+import cs from 'classnames'
 import { PageBlock } from 'notion-types'
-
-import TweetEmbed from 'react-tweet-embed'
-
-// core notion renderer
+import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
+import BodyClassName from 'react-body-classname'
 import { NotionRenderer } from 'react-notion-x'
+import TweetEmbed from 'react-tweet-embed'
+import { useSearchParam } from 'react-use'
 
 // utils
 import {
-  getBlockTitle,
-  getPageProperty,
-  formatDate,
   parsePageId,
   normalizeTitle
 } from 'notion-utils'
@@ -28,14 +24,12 @@ import { useDarkMode } from 'lib/use-dark-mode'
 import * as types from 'lib/types'
 import * as config from 'lib/config'
 
-// components
-import { Loading } from './Loading'
-import { Page404 } from './Page404'
-import { PageHead } from './PageHead'
-import { PageAside } from './PageAside'
 import { Footer } from './Footer'
+import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
-
+import { Page404 } from './Page404'
+import { PageAside } from './PageAside'
+import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
 // -----------------------------------------------------------------------------
@@ -138,14 +132,9 @@ const propertyDateValue = (
     const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
 
     if (publishDate) {
-      return (
-        <div>
-          <b>Published </b>
-          {formatDate(publishDate, {
-            month: 'long'
-          })}
-        </div>
-      )
+      return `${formatDate(publishDate, {
+        month: 'long'
+      })}`
     }
   }
 

@@ -1,5 +1,6 @@
 import * as React from 'react'
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
+
 import { IconContext } from '@react-icons/all-files'
 import { language } from '../lib/config'
 
