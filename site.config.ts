@@ -24,6 +24,9 @@ export default siteConfig({
   twitter: 'yoshiki__0428',
   github: 'yoshiki-0428',
   linkedin: null,
+  // mastodon: '#', // optional mastodon profile URL, provides link verification
+  // newsletter: '#', // optional newsletter URL
+  // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults

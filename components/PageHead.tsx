@@ -1,8 +1,8 @@
-import Head from 'next/head'
 import * as React from 'react'
+import Head from 'next/head'
 
-import * as types from 'lib/types'
-import * as config from 'lib/config'
+import * as config from '@/lib/config'
+import * as types from '@/lib/types'
 
 export const PageHead: React.FC<
   types.PageProps & {

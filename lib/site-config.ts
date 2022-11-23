@@ -14,7 +14,10 @@ export interface SiteConfig {
   twitter?: string
   github?: string
   linkedin?: string
+  newsletter?: string
+  youtube?: string
   zhihu?: string
+  mastodon?: string;
 
   defaultPageIcon?: string | null
   defaultPageCover?: string | null
