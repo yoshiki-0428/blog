@@ -26,7 +26,7 @@ export const PageActions: React.FC<{ title: string }> = ({ title }) => {
         onClick={() => setIsLike(!isLike)}
       >
         {!isLike && <IoHeartOutline />}
-        {isLike && <IoHeartSharp />}
+        {isLike && <IoHeartSharp color='#e0265e' />}
       </a>
 
       <a
