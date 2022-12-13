@@ -13,10 +13,7 @@ import TweetEmbed from 'react-tweet-embed'
 import { useSearchParam } from 'react-use'
 
 // utils
-import {
-  parsePageId,
-  normalizeTitle
-} from 'notion-utils'
+import { parsePageId, normalizeTitle } from 'notion-utils'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapImageUrl } from 'lib/map-image-url'
 import { searchNotion } from 'lib/search-notion'
@@ -31,6 +28,7 @@ import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
+import { PageActions } from '@/components/PageActions'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -354,6 +352,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
+        pageFooter={
+          <div style={{ margin: 'auto' }}>
+            <PageActions title={title} />
+          </div>
+        }
         footer={footer}
         pageTitle={tagsPage && propertyToFilterName ? title : undefined}
         pageCover={pageCover}
