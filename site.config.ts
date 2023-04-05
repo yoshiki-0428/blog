@@ -4,25 +4,25 @@ export default siteConfig({
   language: 'ja',
 
   // the site's root Notion page (required)
-  rootNotionPageId: 'df0b51fe0eb04981aaa95c7e2a2280b4',
+  rootNotionPageId: 'ac7a37a35f2b4f59bd6214de6c45ba71',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
-  asideNotionPageId: '2ae2d6db5d324a729e81431217df2a4c',
+  asideNotionPageId: '7fdcde732e8e4dcb9b9d8659f422b872',
 
   // basic site info (required)
-  name: 'engineer blog by yoshiki-0428',
-  domain: 'tech-blog.yoshikiohashi.dev',
-  author: 'Yoshiki',
+  name: '旅するエンジニアとその嫁',
+  domain: '旅するエンジニアとその嫁.jp',
+  author: 'TabiYome',
 
   // open graph metadata (optional)
-  description: '',
+  description: '旅するエンジニアとその嫁のパーソナルブログ',
 
   // social usernames (optional)
-  twitter: 'yoshiki__0428',
-  github: 'yoshiki-0428',
+  twitter: null,
+  github: null,
   linkedin: null,
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
@@ -60,7 +60,7 @@ export default siteConfig({
   navigationLinks: [
     {
       title: 'About',
-      pageId: 'e8560208a8b840fc8a4c1632fb7c0c1a'
+      pageId: 'ebb6de31b83b4f6e95eaa5b621f8a6f3'
     }
   ]
 })
