@@ -442,13 +442,13 @@
 }
 
 .notion-block-dfc7f709ae3e42c69292f6543d5586f0
-  .notion-collection-column-title-icon {
+.notion-collection-column-title-icon {
   display: none;
 }
 
 .notion-block-dfc7f709ae3e42c69292f6543d5586f0
-  .notion-table
-  .notion-page-icon-inline {
+.notion-table
+.notion-page-icon-inline {
   display: none;
 }
 
@@ -464,16 +464,16 @@
 }
 
 .notion-block-266ce1a8316f44ecbd36e3908ebdba78
-  .notion-page-icon-hero.notion-page-icon-image {
+.notion-page-icon-hero.notion-page-icon-image {
   border-radius: unset;
   box-shadow: none;
 }
 
 .notion-block-266ce1a8316f44ecbd36e3908ebdba78
-  .notion-page-icon-hero.notion-page-icon-image
-  img,
+.notion-page-icon-hero.notion-page-icon-image
+img,
 .notion-block-266ce1a8316f44ecbd36e3908ebdba78
-  .notion-page-icon-hero.notion-page-icon-image
-  span {
+.notion-page-icon-hero.notion-page-icon-image
+span {
   border-radius: unset;
 }
