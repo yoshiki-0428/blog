@@ -3,6 +3,7 @@ import pMemoize from 'p-memoize'
 
 import * as config from './config'
 import * as types from './types'
+import { filterCheckbox } from './filterProperty'
 import { includeNotionIdInUrls } from './config'
 import { getCanonicalPageId } from './get-canonical-page-id'
 import { notion } from './notion-api'
@@ -38,6 +39,10 @@ async function getAllPagesImpl(
     rootNotionPageId,
     rootNotionSpaceId,
     getPage
+  )
+
+  Object.keys(pageMap).map(
+    (pageId) => (pageMap[pageId] = filterCheckbox(pageMap[pageId]))
   )
 
   const canonicalPageMap = Object.keys(pageMap).reduce(

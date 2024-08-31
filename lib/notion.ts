@@ -8,6 +8,7 @@ import {
   navigationLinks,
   navigationStyle
 } from './config'
+import { filterCheckbox } from './filterProperty'
 import { notion } from './notion-api'
 import { getPreviewImageMap } from './preview-images'
 
@@ -55,6 +56,8 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
     }
   }
 
+  recordMap = filterCheckbox(recordMap)
+
   if (isPreviewImageSupportEnabled) {
     const previewImageMap = await getPreviewImageMap(recordMap)
     ;(recordMap as any).preview_images = previewImageMap
@@ -64,5 +67,9 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
 }
 
 export async function search(params: SearchParams): Promise<SearchResults> {
-  return notion.search(params)
+  const results = await notion.search(params)
+
+  const recordMap = results.recordMap as ExtendedRecordMap
+  results.recordMap = filterCheckbox(recordMap)
+  return results
 }

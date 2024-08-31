@@ -1,25 +1,29 @@
 import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
+  language: 'ja',
+
   // the site's root Notion page (required)
-  rootNotionPageId: '7875426197cf461698809def95960ebf',
+  rootNotionPageId: 'df0b51fe0eb04981aaa95c7e2a2280b4',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
+  asideNotionPageId: '2ae2d6db5d324a729e81431217df2a4c',
+
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
-  author: 'Travis Fischer',
+  name: 'engineer blog by yoshiki-0428',
+  domain: 'tech-blog.yoshikiohashi.dev',
+  author: 'Yoshiki',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: '',
 
   // social usernames (optional)
-  twitter: 'transitive_bs',
-  github: 'transitive-bullshit',
-  linkedin: 'fisch2',
+  twitter: 'yoshiki__0428',
+  github: 'yoshiki-0428',
+  linkedin: null,
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
@@ -27,8 +31,8 @@ export default siteConfig({
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
   defaultPageIcon: null,
-  defaultPageCover: null,
-  defaultPageCoverPosition: 0.5,
+  defaultPageCover: 'https://transitivebullsh.it/page-cover.jpg',
+  defaultPageCoverPosition: 1,
 
   // whether or not to enable support for LQIP preview images (optional)
   isPreviewImageSupportEnabled: true,
@@ -36,7 +40,7 @@ export default siteConfig({
   // whether or not redis is enabled for caching generated preview images (optional)
   // NOTE: if you enable redis, you need to set the `REDIS_HOST` and `REDIS_PASSWORD`
   // environment variables. see the readme for more info
-  isRedisEnabled: false,
+  isRedisEnabled: true,
 
   // map of notion page IDs to URL paths (optional)
   // any pages defined here will override their default URL paths
@@ -48,18 +52,15 @@ export default siteConfig({
   // }
   pageUrlOverrides: null,
 
+  pageUrlAdditions: null,
+
   // whether to use the default notion navigation style or a custom one with links to
-  // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
-  navigationStyle: 'default'
-  // navigationStyle: 'custom',
-  // navigationLinks: [
-  //   {
-  //     title: 'About',
-  //     pageId: 'f1199d37579b41cbabfc0b5174f4256a'
-  //   },
-  //   {
-  //     title: 'Contact',
-  //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
-  //   }
-  // ]
+  // important pages
+  navigationStyle: 'custom',
+  navigationLinks: [
+    {
+      title: 'About',
+      pageId: 'e8560208a8b840fc8a4c1632fb7c0c1a'
+    }
+  ]
 })

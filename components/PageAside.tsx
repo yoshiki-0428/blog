@@ -1,30 +1,40 @@
 import * as React from 'react'
 
 import { Block, ExtendedRecordMap } from 'notion-types'
-
-import { getPageTweet } from '@/lib/get-page-tweet'
-
 import { PageActions } from './PageActions'
 import { PageSocial } from './PageSocial'
+import { NotionRenderer } from 'react-notion-x'
+import { getPageProperty } from 'notion-utils'
 
 export const PageAside: React.FC<{
   block: Block
   recordMap: ExtendedRecordMap
+  asideRecordMap?: ExtendedRecordMap
   isBlogPost: boolean
-}> = ({ block, recordMap, isBlogPost }) => {
+}> = ({ block, recordMap, asideRecordMap, isBlogPost }) => {
   if (!block) {
     return null
   }
 
   // only display comments and page actions on blog post pages
   if (isBlogPost) {
-    const tweet = getPageTweet(block, recordMap)
-    if (!tweet) {
+    const title = getPageProperty('Name', block, recordMap)
+    if (!title) {
       return null
     }
 
-    return <PageActions tweet={tweet} />
+    return <PageActions title={title as string} />
   }
 
-  return <PageSocial />
+  return (
+    <div>
+      <PageSocial />
+      {asideRecordMap && (
+        <NotionRenderer
+          className='notion-aside-block'
+          recordMap={asideRecordMap}
+        />
+      )}
+    </div>
+  )
 }

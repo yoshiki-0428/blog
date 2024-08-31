@@ -13,8 +13,11 @@ export interface PageError {
 export interface PageProps {
   site?: Site
   recordMap?: ExtendedRecordMap
+  asideRecordMap?: ExtendedRecordMap
   pageId?: string
   error?: PageError
+  tagsPage?: boolean
+  propertyToFilterName?: string | string
 }
 
 export interface Params extends ParsedUrlQuery {
@@ -27,6 +30,7 @@ export interface Site {
 
   rootNotionPageId: string
   rootNotionSpaceId: string
+  asideNotionPageId: string
 
   // settings
   html?: string

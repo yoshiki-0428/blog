@@ -106,7 +106,8 @@ export default async function OGImage(req: NextRequest) {
               backgroundColor: '#fff',
               padding: 24,
               alignItems: 'center',
-              textAlign: 'center'
+              textAlign: 'center',
+              borderRadius: '5px'
             }}
           >
             {pageInfo.detail && (
@@ -115,19 +116,34 @@ export default async function OGImage(req: NextRequest) {
 
             <div
               style={{
-                fontSize: 70,
+                width: '800px',
+                fontSize: 60,
                 fontWeight: 700,
+                wordBreak: 'break-all',
                 fontFamily: 'Inter'
               }}
             >
               {pageInfo.title}
             </div>
 
-            {pageInfo.detail && (
-              <div style={{ fontSize: 32, opacity: 0.6 }}>
-                {pageInfo.detail}
-              </div>
-            )}
+            <div
+              style={{
+                width: '400px',
+                display: 'flex',
+                justifyContent: 'space-around'
+              }}
+            >
+              {pageInfo.detail && (
+                <div style={{ fontSize: 32, opacity: 0.6 }}>
+                  {pageInfo.detail}
+                </div>
+              )}
+              {pageInfo.author && (
+                <div style={{ fontSize: 32, opacity: 0.6 }}>
+                  {pageInfo.author}
+                </div>
+              )}
+            </div>
           </div>
         </div>
 

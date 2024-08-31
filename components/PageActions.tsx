@@ -1,32 +1,40 @@
 import * as React from 'react'
+import { useEffect, useState } from 'react'
+import * as config from '@/lib/config'
 
 import { AiOutlineRetweet } from '@react-icons/all-files/ai/AiOutlineRetweet'
 import { IoHeartOutline } from '@react-icons/all-files/io5/IoHeartOutline'
-
+import { IoHeartSharp } from '@react-icons/all-files/io5/IoHeartSharp'
 import styles from './styles.module.css'
 
 /**
  * @see https://developer.twitter.com/en/docs/twitter-for-websites/web-intents/overview
  */
-export const PageActions: React.FC<{ tweet: string }> = ({ tweet }) => {
+export const PageActions: React.FC<{ title: string }> = ({ title }) => {
+  const [isLike, setIsLike] = useState<boolean>(false)
+  const [url, setUrl] = useState<string>(config.host)
+
+  useEffect(() => {
+    if (typeof location !== 'undefined') setUrl(location.href)
+  }, [])
+
   return (
     <div className={styles.pageActions}>
       <a
         className={styles.likeTweet}
-        href={`https://twitter.com/intent/like?tweet_id=${tweet}`}
-        target='_blank'
-        rel='noopener noreferrer'
-        title='Like this post on Twitter'
+        title='Like this article'
+        onClick={() => setIsLike(!isLike)}
       >
-        <IoHeartOutline />
+        {!isLike && <IoHeartOutline />}
+        {isLike && <IoHeartSharp color='#e0265e' />}
       </a>
 
       <a
         className={styles.retweet}
-        href={`https://twitter.com/intent/retweet?tweet_id=${tweet}`}
+        href={`https://twitter.com/share?url=${url}&text=${title}`}
         target='_blank'
         rel='noopener noreferrer'
-        title='Retweet this post on Twitter'
+        title='Share on Twitter'
       >
         <AiOutlineRetweet />
       </a>
